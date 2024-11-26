@@ -1,0 +1,43 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  margin: 80px 0px 80px 0;
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.category_wrapper {
+  border-radius: 10px;
+  margin: 50px;
+  height: 250px;
+  width: 350px;
+
+  cursor: pointer;
+
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+  transition: all 0.2s ease-in;
+}
+
+.category_wrapper:hover {
+  background-color: rgba(250, 194, 194, 0.5);
+}
+
+.category_title {
+  display: flex;
+  justify-content: end;
+  padding-right: 20px;
+  color: #a1a1a1;
+
+  transition: all 0.2s ease-in;
+}
