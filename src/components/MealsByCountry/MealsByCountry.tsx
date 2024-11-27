@@ -19,9 +19,9 @@ interface Params {
 const MealsByCountry: FC = () => {
   const { countrieName } = useParams<Params>();
   const [meals, setMeals] = useState<CountrieMeal[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedMeal, setSelectedMeal] = useState(null);
-  const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState<boolean>(true);
+  const [selectedMeal, setSelectedMeal] = useState<CountrieMeal | null>(null);
+  const [filter, setFilter] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -53,7 +53,7 @@ const MealsByCountry: FC = () => {
     mealsByCountrie();
   }, [countrieName]);
 
-  const filteredMeals = meals.filter((meal) =>
+  const filteredMeals = meals.filter((meal: CountrieMeal) =>
     meal.strMeal.toLowerCase().includes(filter.toLowerCase())
   );
 

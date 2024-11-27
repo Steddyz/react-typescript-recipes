@@ -3,10 +3,19 @@ import { useLocation } from "react-router-dom";
 
 import cl from "./RecipePage.module.css";
 
+interface Recipe {
+  strMeal: string;
+  strMealThumb: string;
+  strCategory?: string;
+  strArea: string;
+  strInstructions: string;
+  [key: string]: string | undefined;
+}
+
 const RecipePage: FC = () => {
   const location = useLocation();
 
-  const recipe = location.state;
+  const recipe = location.state as Recipe;
 
   if (!recipe) {
     return <div>Загрузка...</div>;

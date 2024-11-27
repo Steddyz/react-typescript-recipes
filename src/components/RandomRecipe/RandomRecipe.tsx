@@ -13,6 +13,7 @@ interface Recipe {
 
 const RandomRecipe: FC = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -22,10 +23,14 @@ const RandomRecipe: FC = () => {
 
   useEffect(() => {
     const getRandomRecipe = async () => {
-      const responce = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/random.php"
-      );
-      setRecipe(responce.data.meals[0]);
+      try {
+        const responce = await axios.get(
+          "https://www.themealdb.com/api/json/v1/1/random.php"
+        );
+        setRecipe(responce.data.meals[0]);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getRandomRecipe();
   }, []);
@@ -41,7 +46,7 @@ const RandomRecipe: FC = () => {
           >
             <img
               src={recipe.strMealThumb}
-              alt="randomRecipe"
+              alt={recipe.strMeal}
               className={cl.random_dish}
             />
             <div className={cl.wapper_inner}>
